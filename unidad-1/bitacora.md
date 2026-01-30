@@ -274,6 +274,8 @@ function draw() {
 ***Captura de pantalla:***
 <img width="1912" height="812" alt="image" src="https://github.com/user-attachments/assets/b5b7c15c-3348-4993-8bb2-07a097fcdb1b" />
 
+## Bitácora de aplicación 
+
 ## **Actividad 7.**
 
 1)R:\ **¿Ques una obra generativa?**
@@ -291,11 +293,11 @@ Una obra generativa es basicamente una creación artistica basada en la alatorie
 <img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/86126318-2ebf-4cec-a319-915714a805bf" />
 
 <br>
-<br>
-<br>
+
+
+## Bitácora de reflexión
 
 ## ***Actividad 8.***
-
 **1)R\:** **Diferencia entre random() y noise() ¿En que casos se utilizan?:** La principal diferencia es como actuan estos dos; mientras random da valores completamente al azar, que pueden estar muy dispersos entre si, causando cambios bruscos e impredecibles. Por otro lado, noise es mucho más organizado, el movimiento es mucho más suave y continuo, ya que al tomar valores muy cercanos entre si hace que el movimiento sea más natural y tenga transiciones suaves.
 <br>
 <br>
@@ -309,13 +311,6 @@ Una obra generativa es basicamente una creación artistica basada en la alatorie
 **4)R\:** En mi obra final utilicé aleatoriedad uniforme mediante la función random(), aplicada al color, tamaño y posición de las figuras, combinada con la interacción del mouse. Esta elección fue adecuada porque permitió generar variaciones constantes dentro de rangos controlados, haciendo que cada interacción produjera un resultado distinto sin perder coherencia visual. La aleatoriedad uniforme aporta dinamismo y hace que la obra sea verdaderamente generativa, ya que no se repite nunca de la misma forma y responde directamente al usuario.
 
 **5)R\:** **¿Qué es un “paseo” o “caminata” (walk) en el contexto de la simulación? ¿Qué característica particular tiene una caminata de tipo “Lévy flight”?:** Un paseo o walk en simulación es basicamente un proceso en donde un objeto se mueve paso a paso, el cual decide en que dirección ir según valores aleatorios. En el caso de una caminata tipo Lévy flight consiste en que una caminata se ejecute y basado en una probabilidad establecida en el codigo de repente en el walk se va a dar un paso muy grande, por ejemplo: el sistema va contando 1,2,3... y de repende cae en el valor de la probabilidad establecida y pum salta a otra posición muy alejada y totalmente aleatoria.
-
-## Bitácora de aplicación 
-
-
-
-## Bitácora de reflexión
-
 
 
 
