@@ -116,15 +116,73 @@ class Walker {
 
 ## Actividad 6. 
 
+**Codigo con el resultado pedido**
+```java
+let t = 0;
+let step = 0.01;
 
+function setup() {
+  createCanvas(400, 400);
+}
 
+function draw() {
+  background(220);
 
+  let base = createVector(80, 320);
+
+  let v1 = createVector(250, 0);     
+  let v2 = createVector(0, -250);    
+
+  let vGreen = p5.Vector.sub(v2, v1);
+  let vLerp = p5.Vector.lerp(v1, v2, t);
+
+  let c1 = color(255, 0, 0);
+  let c2 = color(0, 0, 255);
+  let movingColor = lerpColor(c1, c2, t);
+
+  drawArrow(base, v1, 'red');
+  drawArrow(base, v2, 'blue');
+
+  let redTip = p5.Vector.add(base, v1);
+  drawArrow(redTip, vGreen, 'green');
+
+  drawArrow(base, vLerp, movingColor);
+
+  t += step;
+  if (t > 1 || t < 0) {
+    step *= -1;
+  }
+}
+
+function drawArrow(base, vec, myColor) {
+  push();
+  stroke(myColor);
+  strokeWeight(3);
+  fill(myColor);
+  translate(base.x, base.y);
+  line(0, 0, vec.x, vec.y);
+  rotate(vec.heading());
+  let arrowSize = 7;
+  translate(vec.mag() - arrowSize, 0);
+  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+  pop();
+}
+
+```
+
+**¿Cómo funciona lerp() y lerpColor().**
+**R\:** "lerp()" basicamente calcula un punto intermedio entre dos cosas usando una formula proporcional, en el caso de "p5.Vector.lerp(v1, v2, t)" lo que hace internamente es esto: toma la diferencia entre v2 y v1, la multiplica por t, y se la suma a v1. Si t = 0, no se mueve nada y se queda en v1. Si t = 1, avanza toda la distancia hasta v2. Si t = 0.5, avanza la mitad del camino. Es como moverse progresivamente sobre una línea recta entre dos puntos. por otro lado, "lerpColor()" funciona igual, pero en vez de interpolar posiciones en el espacio (x, y), interpola valores de color (rojo, verde y azul), produciendo una transición suave entre un color y otro a medida que cambia t.
+<br>
+
+**¿Cómo se dibuja una flecha usando drawArrow()?**
+**R\:** La función drawArrow() primero traslada el sistema de coordenadas al punto base del vector usando translate(), luego dibuja la línea del vector desde el origen hasta (vec.x, vec.y). Después rota el sistema según el ángulo del vector usando vec.heading() para que la punta apunte correctamente, y finalmente coloca un triángulo en el extremo usando la magnitud del vector (vec.mag()) para representar la cabeza de la flecha.
 
 ## Bitácora de aplicación 
 
 
 
 ## Bitácora de reflexión
+
 
 
 
