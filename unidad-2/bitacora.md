@@ -197,10 +197,79 @@ function drawArrow(base, vec, myColor) {
 ## Actividad 9. 
 
 **Descripción del concepto de la obra generativa**
+Para mi obra generativa use un sistema de particulas que siguen el modelo de Motion 101, dado que cada particulaa tiene posición, velocidad y acelaración. La aceleración esta dirigida al mouse, con el proposito de que las particulas se vean como que persiguen al mouse (osea al usuario si lo vesmos de otra forma) para así poder crea patrones organicos y unicos, caracteristicos de una obra generativa. La regla aplicada fue usar una aceleración que apunta al cursor y limitar la velocidad para controlar el movimiento. Elegí esta regla porque genera una sensación de interacción directa entre el usuario y el sistema, reforzando la idea de movimiento emergente a partir de reglas simples.
+<br>
+<br>
+
+**Codigo**
+```java
+let particles = [];
+
+function setup() {
+  createCanvas(600, 400);
+  
+  for (let i = 0; i < 50; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function draw() {
+  background(10, 20); // leve transparencia para efecto de estela
+  
+  for (let p of particles) {
+    p.update();
+    p.show();
+  }
+}
+
+class Particle {
+  constructor() {
+    this.position = createVector(random(width), random(height));
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+  }
+
+  update() {
+    // vector hacia el mouse
+    let mouse = createVector(mouseX, mouseY);
+    this.acceleration = p5.Vector.sub(mouse, this.position);
+    this.acceleration.normalize();
+    this.acceleration.mult(0.5); // fuerza de atracción
+
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(5);
+
+    this.position.add(this.velocity);
+  }
+
+  show() {
+    noStroke();
+    fill(100, 200, 255);
+    circle(this.position.x, this.position.y, 8);
+  }
+}
+
+```
+<br>
+<br>
+
+**Enlace al proyecto:** https://editor.p5js.org/luisafer1845/sketches/Rv33Qc_3e
+<br>
+<br>
+
+**Capturas de pantalla**
+
+<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/8640e7f4-3010-4430-83c8-e24a2057001b" />
+<br>
+<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/5e63c79b-b9bf-4bdc-b67a-a633fdd2a1e1" />
+<br>
+<img width="1918" height="863" alt="image" src="https://github.com/user-attachments/assets/6092f698-2470-400d-91ea-48dbdef288f0" />
+
 
 
 
 ## Bitácora de reflexión
+
 
 
 
