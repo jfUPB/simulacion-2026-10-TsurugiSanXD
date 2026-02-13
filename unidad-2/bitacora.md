@@ -197,7 +197,7 @@ function drawArrow(base, vec, myColor) {
 ## Actividad 9. 
 
 **Descripción del concepto de la obra generativa**
-Para mi obra generativa use un sistema de particulas que siguen el modelo de Motion 101, dado que cada particulaa tiene posición, velocidad y acelaración. La aceleración esta dirigida al mouse, con el proposito de que las particulas se vean como que persiguen al mouse (osea al usuario si lo vesmos de otra forma) para así poder crea patrones organicos y unicos, caracteristicos de una obra generativa. La regla aplicada fue usar una aceleración que apunta al cursor y limitar la velocidad para controlar el movimiento. Elegí esta regla porque genera una sensación de interacción directa entre el usuario y el sistema, reforzando la idea de movimiento emergente a partir de reglas simples.
+Para mi obra generativa use un sistema de particulas que siguen el modelo de Motion 101, dado que cada particulaa tiene posición, velocidad y acelaración. La aceleración esta dirigida al mouse, con el proposito de que las particulas se vean como que persiguen al mouse (osea al usuario si lo vesmos de otra forma) para así poder crea patrones organicos y unicos, caracteristicos de una obra generativa. La regla aplicada fue usar una aceleración que apunta al cursor y limitar la velocidad para controlar el movimiento. Elegí esta regla porque genera una sensación de interacción directa entre el usuario y el sistema, reforzando la idea de movimiento emergente a partir de reglas simples. Basicamente al final mi obra termino siento una exploración artistica, debido a que a través de la prueba y error consegui el resultado final.
 <br>
 <br>
 
@@ -269,6 +269,7 @@ class Particle {
 
 
 ## Bitácora de reflexión
+
 
 
 
