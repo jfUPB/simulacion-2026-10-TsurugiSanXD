@@ -86,7 +86,35 @@ class Walker {
 <br>
 
 ## Actividad 5.
+**1)¿Para qué sirve el método mag()? Nota que hay otro método llamado magSq(). ¿Cuál es la diferencia entre ambos? ¿Cuál es más eficiente?**
+**R\:** "mag()" sirve para calcular la magnitud (longitud) del vector usando la raiz cuadrada de x^2 + y^2. el otro metodo "magSq()" hace casi lo mismo, solo que este solo calcula x^2 + y^2 sin la raiz cuadrada y devuelve la longitus del vector alcuadrado, siendo es su diferencia con respecto a "mag()". Por suposición, "magSq()" es más eficiente dado que evita calcular la raiz cuadrada, lo cual tengo entendido que es una operación pesada para el equipo. 
+<br>
 
+**2)¿Para qué sirve el método normalize()?**
+**R\:** "normalize()" sirve para convertir el vector en un vector unitario, osea que hace que la magnitud del vector sea 1. Esta operación mantiene la dirección del vector, lo unico que cambia es la magnitud del mismo.
+<br>
+
+**3)Te encuentras con un periodista en la calle y te pregunta ¿Para qué sirve el método dot()? ¿Qué le responderías en un frase?**
+**R\:** Le responderia que: El metodo "dot()" sirve para saber que tan alineados estan dos vectores que apuntan a la misma dirección.
+<br>
+
+**4)El método dot() tiene una versión estática y una de instancia. ¿Cuál es la diferencia entre ambas?**
+**R\:** La diferencia principal entre estos dos es que la versión de intencia trabaja direectamente con el vector, ose trabaja directamente con el objeto; en cambio, la versión estatica trabaja con la clase no desde un objeto en especifico, lo cual viene siendo una forma más general el calculo, sin embargo, si se trabaja con los mismos valores el resultado sera el mismo independientemente de con cual de los dos se trabaje. 
+<br>
+
+**5)Ahora el mismo periodista curioso de antes te pregunta si le puedes dar una intuición geométrica acerca del producto cruz. Entonces te pregunta ¿Cuál es la interpretación geométrica del producto cruz de dos vectores? Tu respuesta debe incluir qué pasa con la orientación y la magnitud del vector resultante.**
+**R\:** El producto cruz entre dos vectores genera un nuevo vector que es perpendicular a ambos. Su magnitud representa el área del paralelogramo que forman los dos vectores (más grande si están más “abiertos”, cero si están alineados). En cuanto a la orientación, el vector resultante apunta en una dirección determinada por la regla de la mano derecha: en 2D, esto se traduce en que el resultado indica si el giro de un vector hacia el otro es en sentido antihorario (positivo) o horario (negativo).
+<br>
+
+**6)¿Para que te puede servir el método dist()?**
+**R\:** "dist()" calcula la distancia entre dos vectores, es útil para saber qué tan lejos está un objeto de otro e internamente usa la diferencia entre vectores y su magnitud.
+<br>
+
+**7)¿Para qué sirven los métodos normalize() y limit()?**
+**R\:** "normalize()" convierte el vector en unitario (magnitud 1) y "limit(max)" limita la magnitud del vector a un valor máximo. Si el vector es más grande que max, lo reduce y si no, lo deja igual.
+<br>
+
+## Actividad 6. 
 
 
 
@@ -97,6 +125,7 @@ class Walker {
 
 
 ## Bitácora de reflexión
+
 
 
 
