@@ -20,8 +20,51 @@ Por ejemplo: si tengo un "position" de (100, 50) y un "velocity" de (2, 3) al ej
 **R\:** Usando el codigo de "traditional random walker" hice un cambio haciendo que la posición se maneje mediante coordenadas que se manejan con incrementos y decrementos de 1 unidad. La conversión consistió en reemplazar las variables "this.x" y "this.y" por un unico vector llamado "this.position" creado con "createVector(width / 2, height / 2)" en lugar de modificar valores individuales, se creó un vector de desplazamiento dependiendo de la dirección elegida y luego se utilizó el método .add() para sumarlo a la posición.
 
 ```java
+let walker;
+
+function setup() {
+  createCanvas(640, 240);
+  walker = new Walker();
+  background(255);
+}
+
+function draw() {
+  walker.step();
+  walker.show();
+}
+
+class Walker {
+  constructor() {
+    this.position = createVector(width / 2, height / 2);
+  }
+
+  show() {
+    stroke(0);
+    point(this.position.x, this.position.y);
+  }
+
+  step() {
+    const choice = floor(random(4));
+    let step;
+
+    if (choice == 0) {
+      step = createVector(1, 0);   // derecha
+    } else if (choice == 1) {
+      step = createVector(-1, 0);  // izquierda
+    } else if (choice == 2) {
+      step = createVector(0, 1);   // abajo
+    } else {
+      step = createVector(0, -1);  // arriba
+    }
+
+    this.position.add(step);
+  }
+}
 
 ```
+<br>
+
+## Actividad 4. 
 
 
 ## Bitácora de aplicación 
@@ -29,5 +72,6 @@ Por ejemplo: si tengo un "position" de (100, 50) y un "velocity" de (2, 3) al ej
 
 
 ## Bitácora de reflexión
+
 
 
