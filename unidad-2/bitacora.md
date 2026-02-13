@@ -65,6 +65,31 @@ class Walker {
 <br>
 
 ## Actividad 4. 
+**¿Qué resultado esperas obtener en el programa anterior?**
+**R\:** Analizando el codigo pues primero que nada espero ver un vector en el preview en la posición (6,9) ya que con esta linea de codigo "position = createVector(6,9);" lo estamos ceando allí, luego tambien supongo que por tener un "ToString()" se va a imprimir en pantalla con algun color de fondo ya que con es linea se le da un color al fondo "background(220);" y con respecto a lo demas creo que se va a multiplicar la posicón del ventor para cambiarla, eso es lo que espero obtener al ver el codigo. 
+<br>
+
+**¿Qué resultado obtuviste?**
+**R\:** Pues al ejecutar el codigo más o menos obtuve lo que esperaba pero no como creia, porque si se muestra el vector pero no en el preview como yo esperab, si no que sale en la consola, si se imprimio como un string que esperaba eso. Y tambien se hizo un cambio en la posición del vector como creia, pero los valores no se multiplicaron si no que solo se reemplazaron y ahora el vector esta en la posición "(20,30)"
+<br>
+
+**Recuerda los conceptos de paso por valor y paso por referencia en programación.**
+**R\:** El paso por valor ocurre cuando se envía una copia del dato a una función, por lo que cualquier modificación no afecta al original. En cambio, el paso por referencia ocurre cuando se envía la dirección del objeto en memoria, por lo que cualquier cambio realizado dentro de la función modifica el objeto original.
+<br>
+
+**¿Qué tipo de paso se está realizando en el código?**
+**R\:** En el codigo del ejemplo se esta realizando paso por referencia, porque estamos cambiando nuestro vector original. El vector es un objeto y al cambiar sus propiedades dentro de la función cambiamos el objeto original.
+<br>
+
+**¿Qué aprendiste?**
+**R\:** Aprendi que los vectores en p5 son objetos que se pueden cambiar, ya que al ser parametros de una función no se crean copias si no que se modifican a si mismos para seguir trabajando, por lo tanto, aprendi que cualquier modificación hecha dentro de la función afecta el valor original.
+<br>
+
+## Actividad 5.
+
+
+
+
 
 
 ## Bitácora de aplicación 
@@ -72,6 +97,7 @@ class Walker {
 
 
 ## Bitácora de reflexión
+
 
 
 
