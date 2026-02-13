@@ -175,13 +175,33 @@ function drawArrow(base, vec, myColor) {
 <br>
 
 **¿Cómo se dibuja una flecha usando drawArrow()?**
-**R\:** La función drawArrow() primero traslada el sistema de coordenadas al punto base del vector usando translate(), luego dibuja la línea del vector desde el origen hasta (vec.x, vec.y). Después rota el sistema según el ángulo del vector usando vec.heading() para que la punta apunte correctamente, y finalmente coloca un triángulo en el extremo usando la magnitud del vector (vec.mag()) para representar la cabeza de la flecha.
+**R\:** La función "drawArrow()" primero traslada el sistema de coordenadas al punto base del vector usando "translate()" luego dibuja la linea del vector desde el origen hasta (vec.x, vec.y) despues rota el sistema según el ángulo del vector usando "vec.heading()" para que la punta apunte correctamente, y finalmente coloca un triángulo en el extremo usando la magnitud del vector "(vec.mag())" para representar la cabeza de la flecha.
+
+## Actividad 7. 
+
+**Cuál es el concepto del marco motion 101 y cómo se interpreta geométricamente.**
+**R\:** El marco Motion 101 propone una forma básica de simular movimiento usando vectores. La idea central es que un objeto tiene una posición y una velocidad, ambas representadas como vectores. En cada frame la posición se actualiza sumandole la velocidad "(position.add(velocity))"  geometricamente esto significa que el vector velocidad actúa como un desplazamiento que se suma a la posición actual, moviendo el objeto en el espacio en la dirección y magnitud indicadas por ese vector. Es decir, el movimiento se entiende como suma continua de vectores en el plano.
+ <br>
+
+**¿Cómo se aplica motion 101 en el ejemplo?**
+**R\:** En el ejemplo 1.7, se crea un objeto con un vector "position" y un vector "velocity". En cada actualización del programa "(en draw())" la posición cambia sumándole la velocidad. Luego se dibuja el objeto usando las coordenadas de position. Esto genera un movimiento constante en línea recta, ya que la velocidad no cambia. Visualmente, el objeto se desplaza en la dirección del vector velocidad, demostrando que el movimiento es simplemente la acumulación de ese vector en el tiempo.
+
+## Actividad 8.
+
+**¿Qué observaste cuando usas cada una de las aceleraciones propuestas?**
+**R\:** Con aceleración constante el objeto aumenta su velocidad progresivamente en una dirección fija, generando un movimiento cada vez más rápido y rectilineo. Con aceleración aleatoria la dirección cambia continuamente produciendo trayectorias irregulares y caoticas. Cuando la aceleración apunta hacia el mouse, el objeto se mueve como si lo persiguiera, ajustando su dirección constantemente para acercarse al cursor.
+
 
 ## Bitácora de aplicación 
+
+## Actividad 9. 
+
+**Descripción del concepto de la obra generativa**
 
 
 
 ## Bitácora de reflexión
+
 
 
 
