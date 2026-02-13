@@ -234,10 +234,10 @@ class Particle {
     let mouse = createVector(mouseX, mouseY);
     this.acceleration = p5.Vector.sub(mouse, this.position);
     this.acceleration.normalize();
-    this.acceleration.mult(0.5); // fuerza de atracción
+    this.acceleration.mult(100); // fuerza de atracción
 
     this.velocity.add(this.acceleration);
-    this.velocity.limit(5);
+    this.velocity.limit(100);
 
     this.position.add(this.velocity);
   }
@@ -259,16 +259,17 @@ class Particle {
 
 **Capturas de pantalla**
 
-<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/8640e7f4-3010-4430-83c8-e24a2057001b" />
+<img width="1912" height="867" alt="image" src="https://github.com/user-attachments/assets/d91d1daa-9332-4cab-ad55-d46055253f95" />
 <br>
-<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/5e63c79b-b9bf-4bdc-b67a-a633fdd2a1e1" />
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/9f5683fb-fa33-49c8-8e9f-b4cc0e5c9946" />
 <br>
-<img width="1918" height="863" alt="image" src="https://github.com/user-attachments/assets/6092f698-2470-400d-91ea-48dbdef288f0" />
+<img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/ea8f1031-a9ae-4bd0-9ca6-9b19f2e9aaeb" />
 
 
 
 
 ## Bitácora de reflexión
+
 
 
 
