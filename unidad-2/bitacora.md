@@ -264,11 +264,113 @@ class Particle {
 <img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/9f5683fb-fa33-49c8-8e9f-b4cc0e5c9946" />
 <br>
 <img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/ea8f1031-a9ae-4bd0-9ca6-9b19f2e9aaeb" />
-
-
-
+<br>
 
 ## Bitácora de reflexión
+
+**Describe el concepto de tu obra generativa. Explica el concepto de tu obra generativa.**
+para esta obra generativa quise explora la autoorganización de sistemas dinámicos a través de reglas simples de interacción. Inspirada en las ideas de Jared Tarbell sobre sistemas emergentes y en el trabajo Clusters de Jeffrey Ventrella, la pieza utiliza agentes autónomos que interactúan mediante fuerzas de atracción y repulsión. Basicamente, el sistema no define formas específicas; si no que los patrones surgen espontáneamente a partir de las interacciones locales entre partículas, esto genera agrupaciones dinámicas que se forman y se disuelven constantemente, evocando comportamientos biológicos y estructuras naturales.
+<br>
+<br>
+
+**Codigo**
+```java
+let particles = [];
+
+function setup() {
+  createCanvas(700, 500);
+  
+  for (let i = 0; i < 120; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function draw() {
+  background(10, 20);
+  
+  for (let p of particles) {
+    p.applyBehaviors(particles);
+    p.update();
+    p.show();
+  }
+}
+
+class Particle {
+  constructor() {
+    this.position = createVector(random(width), random(height));
+    this.velocity = p5.Vector.random2D();
+    this.acceleration = createVector(0, 0);
+    this.maxSpeed = 3;
+    this.maxForce = 0.1;
+  }
+
+  applyBehaviors(particles) {
+    let attraction = createVector(0, 0);
+    let repulsion = createVector(0, 0);
+    let total = 0;
+
+    for (let other of particles) {
+      if (other !== this) {
+        let distance = p5.Vector.dist(this.position, other.position);
+
+        if (distance < 80) {
+          let force = p5.Vector.sub(other.position, this.position);
+          force.normalize();
+          
+          attraction.add(force);
+
+          if (distance < 25) {
+            let repel = p5.Vector.sub(this.position, other.position);
+            repel.normalize();
+            repel.div(distance);
+            repulsion.add(repel);
+          }
+          
+          total++;
+        }
+      }
+    }
+
+    if (total > 0) {
+      attraction.div(total);
+      attraction.setMag(this.maxSpeed);
+      attraction.sub(this.velocity);
+      attraction.limit(this.maxForce);
+    }
+
+    repulsion.limit(this.maxForce * 2);
+
+    this.acceleration.add(attraction);
+    this.acceleration.add(repulsion);
+  }
+
+  update() {
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(this.maxSpeed);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+  }
+
+  show() {
+    noStroke();
+    fill(200, 180);
+    circle(this.position.x, this.position.y, 4);
+  }
+}
+```
+<br>
+<br>
+
+**Link al proyecto en p5:** https://editor.p5js.org/luisafer1845/sketches/jcgKf_hOO
+<br>
+
+**Capturas de pantalla**
+
+<img width="1918" height="861" alt="image" src="https://github.com/user-attachments/assets/25edf848-5a95-4453-aa6b-79e8dac48f36" />
+<br>
+<img width="1919" height="863" alt="image" src="https://github.com/user-attachments/assets/b56c531d-d644-48ae-85ab-8c25cd159c64" />
+<br>
+<img width="1919" height="874" alt="image" src="https://github.com/user-attachments/assets/df368856-b3b3-4ebb-8d17-61b48c452b30" />
 
 
 
