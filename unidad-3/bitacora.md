@@ -207,6 +207,164 @@ class Mover {
 
 ## Bitácora de aplicación 
 
+**Actividad 4.**
+<br>
+
+**1)R\:** Mi obra “Relación de tres” trata sobre dos particulas de distinto tipo que se atraen constantemente, como si fueran una pareja. Esa atracción está basada en una fórmula tipo gravedad, que hace que su aceleración dependa de la distancia entre ellas. Agregue fricción para que no se muevan sin control y puedan estabilizarse. Tambien hay una pequeña repulsión entre particulas del mismo tipo para que no se amontonen, el mouse funciona como un tercer elemento que altera la relación, porque cuando se acerca atrae a ambas partículas y rompe el equilibrio. La historia se cuenta a través de las fuerzas y el movimiento, no con texto sino con el comportamiento del sistema.
+
+<br>
+<br>
+
+**Codigo de la aplicación**
+
+<br>
+
+```java
+let particles = [];
+let G = 0.4;   // fuerza suficiente para que se busquen
+let mu = 0.02; // fricción constante
+
+function setup() {
+  createCanvas(700, 500);
+
+  for (let i = 0; i < 10; i++) {
+    particles.push(new Particle(random(width), random(height), "A"));
+    particles.push(new Particle(random(width), random(height), "B"));
+  }
+}
+
+function draw() {
+  background(15, 20);
+
+  for (let p of particles) {
+    p.applyInteractions(particles);
+    p.applyMouseForce();
+    p.applyFriction();   // usamos FRICCIÓN real
+    p.applyBounds();
+    p.update();
+    p.show();
+  }
+}
+
+class Particle {
+  constructor(x, y, type) {
+    this.position = createVector(x, y);
+    this.velocity = p5.Vector.random2D().mult(1.5);
+    this.acceleration = createVector(0, 0);
+    this.mass = 2;
+    this.type = type;
+  }
+
+  applyForce(force) {
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
+
+  applyInteractions(others) {
+    for (let other of others) {
+      if (other !== this) {
+
+        let force = p5.Vector.sub(other.position, this.position);
+        let distance = force.mag();
+        distance = constrain(distance, 15, 200);
+
+        // Atracción entre distintos tipos
+        if (this.type !== other.type) {
+
+          let strength = (G * this.mass * other.mass) / (distance * distance);
+          force.setMag(strength);
+          this.applyForce(force);
+
+        } else {
+
+          // ligera repulsión entre iguales
+          if (distance < 60) {
+            let repel = p5.Vector.sub(this.position, other.position);
+            repel.normalize();
+            repel.mult(0.3);
+            this.applyForce(repel);
+          }
+
+        }
+      }
+    }
+  }
+
+  // FRICCIÓN CONSTANTE (actividad 3)
+  applyFriction() {
+    if (this.velocity.mag() > 0) {
+      let friction = this.velocity.copy();
+      friction.mult(-1);
+      friction.normalize();
+      friction.mult(mu);
+      this.applyForce(friction);
+    }
+  }
+
+  applyMouseForce() {
+    let mouse = createVector(mouseX, mouseY);
+    let force = p5.Vector.sub(mouse, this.position);
+    let distance = force.mag();
+
+    if (distance < 200) {
+      force.setMag(2);
+      this.applyForce(force);
+    }
+  }
+
+  applyBounds() {
+    let margin = 40;
+    let force = createVector(0, 0);
+
+    if (this.position.x < margin) force.x = 0.6;
+    if (this.position.x > width - margin) force.x = -0.6;
+    if (this.position.y < margin) force.y = 0.6;
+    if (this.position.y > height - margin) force.y = -0.6;
+
+    this.applyForce(force);
+  }
+
+  update() {
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(4);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+  }
+
+  show() {
+    noStroke();
+
+    if (this.type === "A") {
+      fill(255, 120, 160, 180);
+    } else {
+      fill(120, 160, 255, 180);
+    }
+
+    circle(this.position.x, this.position.y, 11);
+  }
+}
+```
+
+<br>
+<br>
+
+**Enlace P5:**  https://editor.p5js.org/luisafer1845/sketches/uHhD4WnA7
+
+<br>
+<br>
+
+**Capturas de pantalla**
+
+<br>
+
+<img width="1<img width="1916" height="868" alt="Captura de pantalla 2026-02-27 004506 - copia" src="https://github.com/user-attachments/assets/09eba5df-d9ca-46ba-b114-aabf27ceedc0" />
+
+<img width="1919" height="868" alt="Captura de pantalla 2026-02-27 004518 - copia" src="https://github.com/user-attachments/assets/f239947b-26c9-433a-8dff-30c1e4e8c3bc" />
+
+
+<img width="1919" height="865" alt="Captura de pantalla 2026-02-27 004551" src="https://github.com/user-attachments/assets/03b11e31-e2b0-412d-a8b6-ab39c8e633de" />
+
 
 
 ## Bitácora de reflexión
+
