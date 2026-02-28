@@ -1,5 +1,3 @@
-<img width="96" height="276" alt="image" src="https://github.com/user-attachments/assets/507b7e1f-8472-44ba-b307-c710a4b61b15" /># Unidad 3
-
 ## Bitácora de proceso de aprendizaje
 
 ## Actividad 1.
@@ -381,4 +379,5 @@ fuerza -> aceleración -> velocidad -> posición. En el código eso pasa en cada
 <br>
 
 ***2)R\:*** Me inspiré en los móviles de Alexander Calder, que son esculturas que cuelgan y se mueven con el aire, pero que siempre mantienen un equilibrio. Me gusta que no son estáticas, sino que están en movimiento constante pero balanceado. Mi idea sería hacer una obra generativa con varias formas conectadas por fuerzas tipo resorte, como si fueran partes de un móvil digital. Tendrían gravedad hacia abajo y pequeñas fuerzas que las mantengan unidas, creando tensión y equilibrio. También podría haber una pequeña fuerza tipo “viento” que las mueva. Aplicaría Motion 101 porque todas esas fuerzas (gravedad, tensión, viento) afectarían la aceleración, luego la velocidad y finalmente la posición. Así el movimiento no estaría programado directamente, sino que saldría del sistema, como pasa en las obras de Calder.
+
 
