@@ -1,4 +1,4 @@
-# Unidad 3
+<img width="96" height="276" alt="image" src="https://github.com/user-attachments/assets/507b7e1f-8472-44ba-b307-c710a4b61b15" /># Unidad 3
 
 ## Bitácora de proceso de aprendizaje
 
@@ -367,4 +367,18 @@ class Particle {
 
 
 ## Bitácora de reflexión
+
+## Actividad 5.
+<br> 
+
+***Reflect***
+
+<br>
+
+***1)R\:*** Motion 101 es básicamente una forma de entender cómo funciona el movimiento en programación usando física. La idea es que todo empieza con una fuerza. Esa fuerza genera una aceleración (según F = m·a), la aceleración cambia la velocidad y la velocidad cambia la posición. O sea, es como una cadena:
+fuerza -> aceleración -> velocidad -> posición. En el código eso pasa en cada frame: se suman fuerzas, se actualiza la velocidad con la aceleración y después la posición con la velocidad. No estamos moviendo los objetos “a mano”, sino que el movimiento sale de esas reglas.
+<br>
+<br>
+
+***2)R\:*** Me inspiré en los móviles de Alexander Calder, que son esculturas que cuelgan y se mueven con el aire, pero que siempre mantienen un equilibrio. Me gusta que no son estáticas, sino que están en movimiento constante pero balanceado. Mi idea sería hacer una obra generativa con varias formas conectadas por fuerzas tipo resorte, como si fueran partes de un móvil digital. Tendrían gravedad hacia abajo y pequeñas fuerzas que las mantengan unidas, creando tensión y equilibrio. También podría haber una pequeña fuerza tipo “viento” que las mueva. Aplicaría Motion 101 porque todas esas fuerzas (gravedad, tensión, viento) afectarían la aceleración, luego la velocidad y finalmente la posición. Así el movimiento no estaría programado directamente, sino que saldría del sistema, como pasa en las obras de Calder.
 
