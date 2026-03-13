@@ -616,6 +616,8 @@ https://drive.google.com/drive/folders/11nmk09Z3J2oCaVgjRK6HUyAZgNA91U9q?usp=dri
 
 ## Bitácora de reflexión
 
+## Actividad 12.
+
 Estos conceptos pueden aplicarse en el diseño de experiencias interactivas dentro del entretenimiento digital. Los sistemas generativos permiten crear animaciones y comportamientos dinámicos que cambian en tiempo real. También pueden utilizarse para desarrollar efectos visuales, simulaciones de movimiento y obras generativas interactivas en videojuegos o instalaciones digitales.
 
 ***Diagrama:***
