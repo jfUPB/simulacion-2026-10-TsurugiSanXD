@@ -489,10 +489,130 @@ class Spring {
 
 ## Actividad 10.
 
+En esta actividad modifiqué la simulación para crear un sistema de dos péndulos conectados en serie. Para hacerlo agregué un segundo ángulo y una segunda longitud para calcular la posición del segundo péndulo. El segundo péndulo parte desde la posición del primero, por lo que su movimiento depende del movimiento del primero. Esto genera un sistema más complejo de oscilación.
+<br>
 
+```java
+let a1 = Math.PI / 2;
+let a2 = Math.PI / 2;
+
+let a1_v = 0;
+let a2_v = 0;
+
+let r1 = 120;
+let r2 = 120;
+
+let m1 = 20;
+let m2 = 20;
+
+let g = 0.4;
+
+function setup() {
+  createCanvas(640, 360);
+}
+
+function draw() {
+  background(255);
+
+  translate(width / 2, 80);
+
+  let a1_a = (-g / r1) * sin(a1);
+  let a2_a = (-g / r2) * sin(a2);
+
+  a1_v += a1_a;
+  a2_v += a2_a;
+
+  a1 += a1_v;
+  a2 += a2_v;
+
+  let x1 = r1 * sin(a1);
+  let y1 = r1 * cos(a1);
+
+  let x2 = x1 + r2 * sin(a2);
+  let y2 = y1 + r2 * cos(a2);
+
+  stroke(0);
+  strokeWeight(2);
+
+  line(0, 0, x1, y1);
+  circle(x1, y1, m1);
+
+  line(x1, y1, x2, y2);
+  circle(x2, y2, m2);
+}
+```
+<br>
 
 ## Bitácora de aplicación 
+
+## Actividad 11.
+
+***Ecos del eoceano*** <br>
+Mi obra generativa representa un océano abstracto formado por partículas que se mueven como si fueran corrientes marinas. Cada partícula sigue un movimiento ondulatorio basado en funciones sinusoidales, simulando el flujo del agua. Las corrientes no son completamente predecibles porque el sistema incluye variaciones aleatorias, lo que hace que cada ejecución genere un comportamiento distinto. El usuario puede interactuar con la obra moviendo el mouse, lo que altera la amplitud de las ondas y cambia el comportamiento del sistema, como si estuviera perturbando el agua.
+<br>
+
+***Codigo:***
+```java
+let particles = [];
+let amplitude = 50;
+let angle = 0;
+
+function setup() {
+  createCanvas(700, 400);
+
+  // crear partículas con posiciones aleatorias
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: random(width),
+      y: random(height),
+      speed: random(0.5, 2),
+      offset: random(TWO_PI)
+    });
+  }
+}
+
+function draw() {
+  background(20, 30, 60);
+
+  angle += 0.03;
+
+  for (let p of particles) {
+
+    // movimiento horizontal
+    p.x += p.speed;
+
+    if (p.x > width) {
+      p.x = 0;
+    }
+
+    // movimiento ondulatorio
+    let wave = amplitude * sin(angle + p.offset);
+
+    let y = p.y + wave;
+
+    fill(120, 180, 255);
+    noStroke();
+
+    circle(p.x, y, 10);
+  }
+}
+
+function mouseMoved() {
+
+  // interacción: el mouse cambia la amplitud
+  amplitude = map(mouseX, 0, width, 10, 120);
+
+}
+```
+<br>
+
+***Enlace al proyecto:*** https://editor.p5js.org/luisafer1845/sketches/MluXzFhLB
+<br>
+
+***Capturas de pantalla:***
+
 
 
 
 ## Bitácora de reflexión
+
