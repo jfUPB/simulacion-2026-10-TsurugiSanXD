@@ -611,7 +611,7 @@ function mouseMoved() {
 
 ***Capturas de pantalla:***
 
-
+https://drive.google.com/drive/folders/11nmk09Z3J2oCaVgjRK6HUyAZgNA91U9q?usp=drive_link
 
 
 ## Bitácora de reflexión
