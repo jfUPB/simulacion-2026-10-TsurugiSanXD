@@ -80,7 +80,18 @@ Básicamente el estado fisico es cuanto se meueve la particula y el vital que ta
 
 ## Actividad 2.
 
+**1)¿Qué responsabilidades que antes estaban en draw() ahora están dentro de la clase Emitter?** <br>
+**R)\:** Antes en el ejemplo 4.2 el "draw()" hacia casi todo, tenia a su cargo funciones como: creal particular, guardarlas en su propio array, actulizarlas, dibujarlas y eliminarlas cuando morian. Ahora, "draw()" ya no maneja particulas directamente, ahora maneja "emitters", por lo tanto ahora este tiene la responsabilidad que antes tenia "draw()".
 
+<br>
+
+**2)¿Cuál es la ventaja de encapsular la lógica de emisión en una clase separada?** <br>
+**R)\:** La gran ventaja esta en la escapabilidad y el orden. Antes todo estaba en un solo lugar y era dificil de controlar cuando crece. Ahora cada "emitter" es autonono y puede tener varios "emitters" funcionando al mismo tiempo, esto hace que pasemos de “manejar partículas sueltas” a “manejar sistemas completos de partículas”.
+
+<br>
+
+**3)En este ejemplo hay un array de emitters. ¿Quién crea los emitters? ¿Quién crea las partículas dentro de cada emitter?** <br>
+**R)\:** Los "emitters" son creados por el sketch principal (setup o draw) y los guarda en el array de "emitters".Cada "emitter" crea sus propias particulas, osea el sketch crea sistemas y cada sistema crea sus elementos internos.
 
 
 ## Bitácora de aplicación 
