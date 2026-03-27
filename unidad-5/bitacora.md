@@ -176,5 +176,272 @@ Fue posible porque el sistema está bien separado por responsabilidades. La visu
 
 ## Bitácora de aplicación 
 
+***Concepto***
+<br>
+
+El sistema representa el ciclo de vida de una emoción: la ansiedad. Se busca mostrar cómo una emoción puede comenzar de forma leve, intensificarse hasta un punto crítico, disiparse y al final, llegar al vacio. <br> 
+La intención es transmitir la sensación de pérdida de control durante el pico emocional y el regreso progresivo a la calma.
+<br>
+
+***Boceto***
+
+![WhatsApp Image 2026-03-27 at 12 57 14 AM](https://github.com/user-attachments/assets/e5eb5540-66dc-47af-9738-bfe27ce8ff23)
+
+<br>
+
+***Mapa de decisiones***
+<br>
+
+***Emisión de partículas:*** <br>
+La emisión constante representa la aparición continua de pensamientos o estímulos.
+<br>
+
+***Tipos de partículas:*** <br>
+Se utilizan dos tipos: unas más estables (calma) y otras más caóticas (ansiedad), para representar distintos estados emocionales.
+<br>
+
+***Fuerzas:*** <br>
+Se utiliza una fuerza de gravedad leve para mantener estabilidad y una fuerza de repulsión (repeller) para generar caos en momentos de alta ansiedad.
+<br>
+
+***Condición de muerte:*** <br>
+Las partículas desaparecen gradualmente reduciendo su visibilidad, representando la disolución de la emoción.
+<br>
+
+***Visualización:*** <br>
+Se usan cambios de color y movimiento (suave vs caótico) para diferenciar los estados emocionales.
+<br>
+
+***Interacción del usuario:*** <br>
+La interacción (click) incrementa la intensidad del sistema, generando más partículas o activando fuerzas de repulsión, simulando un aumento de ansiedad.
+<br>
+
+***Implementación***
+
+***Link al codigo:*** https://editor.p5js.org/luisafer1845/sketches/Qc2YkqiVq
+<br>
+
+´´´java
+let emitter;
+let repeller;
+let state = 0;
+
+function setup() {
+  createCanvas(600, 400);
+  emitter = new Emitter(width / 2, height / 2);
+  repeller = new Repeller(width / 2, height / 2);
+}
+
+function draw() {
+  background(10, 10, 30);
+
+  // Cantidad de partículas por frame (aumenta con estado)
+  let spawnRate = [1, 2, 4, 7, 0];
+
+  if (state < 4) {
+    for (let i = 0; i < spawnRate[state]; i++) {
+      emitter.addParticle();
+    }
+  }
+
+  let gravity = createVector(0, 0.03);
+
+  for (let p of emitter.particles) {
+    p.applyForce(gravity);
+
+    // Fuerza del repeller aumenta con estado
+    if (state >= 1) {
+      let force = repeller.repel(p, state);
+      p.applyForce(force);
+    }
+  }
+
+  emitter.run();
+
+  if (state >= 2 && state < 4) {
+    repeller.display(state);
+  }
+}
+
+function mousePressed() {
+  state++;
+  if (state > 4) state = 4;
+
+  if (state === 4) {
+    emitter.particles = [];
+  }
+}
+
+// ---------------- EMITTER ----------------
+
+class Emitter {
+  constructor(x, y) {
+    this.origin = createVector(x, y);
+    this.particles = [];
+  }
+
+  addParticle() {
+    if (state === 0) {
+      this.particles.push(new CalmParticle(this.origin));
+    } else if (state === 1) {
+      this.particles.push(new MildParticle(this.origin));
+    } else if (state === 2) {
+      this.particles.push(new MediumParticle(this.origin));
+    } else if (state === 3) {
+      this.particles.push(new ChaosParticle(this.origin));
+    }
+  }
+
+  run() {
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      let p = this.particles[i];
+      p.run();
+
+      if (p.isDead()) {
+        this.particles.splice(i, 1);
+      }
+    }
+  }
+}
+
+// ---------------- BASE ----------------
+
+class Particle {
+  constructor(position, speedFactor = 1) {
+    this.position = position.copy();
+    this.velocity = createVector(random(-1, 1), random(-1, 1)).mult(speedFactor);
+    this.acceleration = createVector(0, 0);
+    this.lifespan = 255;
+  }
+
+  applyForce(force) {
+    this.acceleration.add(force);
+  }
+
+  update() {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+    this.lifespan -= 2;
+  }
+
+  isDead() {
+    return this.lifespan < 0;
+  }
+}
+
+// ---------------- ESTADOS ----------------
+
+// CALMA
+class CalmParticle extends Particle {
+  constructor(pos) {
+    super(pos, random(0.5, 1));
+  }
+
+  display() {
+    fill(100, 150, 255, this.lifespan);
+    noStroke();
+    ellipse(this.position.x, this.position.y, 6);
+  }
+
+  run() {
+    this.update();
+    this.display();
+  }
+}
+
+// LEVE
+class MildParticle extends Particle {
+  constructor(pos) {
+    super(pos, random(1, 2));
+  }
+
+  display() {
+    fill(150, 200, 255, this.lifespan);
+    noStroke();
+    ellipse(this.position.x, this.position.y, 7);
+  }
+
+  run() {
+    this.update();
+    this.display();
+  }
+}
+
+// MEDIA
+class MediumParticle extends Particle {
+  constructor(pos) {
+    super(pos, random(2, 3));
+  }
+
+  display() {
+    fill(255, 150, 50, this.lifespan);
+    noStroke();
+    ellipse(this.position.x, this.position.y, 9);
+  }
+
+  run() {
+    this.update();
+    this.display();
+  }
+}
+
+// CRISIS
+class ChaosParticle extends Particle {
+  constructor(pos) {
+    super(pos, random(3, 5));
+  }
+
+  update() {
+    super.update();
+
+    // más caos
+    this.velocity.add(createVector(random(-1, 1), random(-1, 1)));
+  }
+
+  display() {
+    fill(255, 50, 50, this.lifespan);
+    noStroke();
+    ellipse(this.position.x, this.position.y, 11);
+  }
+
+  run() {
+    this.update();
+    this.display();
+  }
+}
+
+// ---------------- REPELLER ----------------
+
+class Repeller {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+  }
+
+  repel(p, state) {
+    let dir = p5.Vector.sub(this.position, p.position);
+    let d = dir.mag();
+    d = constrain(d, 5, 100);
+
+    // fuerza escala con estado
+    let strength = [0, 100, 200, 400][state];
+
+    let force = strength / (d * d);
+    dir.normalize();
+    dir.mult(-force);
+
+    return dir;
+  }
+
+  display(state) {
+    let size = [0, 30, 50, 70][state];
+    fill(255, 0, 0, 120);
+    noStroke();
+    ellipse(this.position.x, this.position.y, size);
+  }
+}
+
+´´´
+
 
 ## Bitácora de reflexión
