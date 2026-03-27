@@ -221,7 +221,7 @@ La interacción (click) incrementa la intensidad del sistema, generando más par
 ***Link al codigo:*** https://editor.p5js.org/luisafer1845/sketches/Qc2YkqiVq
 <br>
 
-´´´java
+```java
 let emitter;
 let repeller;
 let state = 0;
@@ -440,8 +440,23 @@ class Repeller {
     ellipse(this.position.x, this.position.y, size);
   }
 }
+```
+<br>
 
-´´´
+***Capturas***
+
+<img width="1917" height="863" alt="image" src="https://github.com/user-attachments/assets/6ab8771a-1416-435d-97f4-e0c4ccbb7ee2" />
+
+<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/ad7a64a9-4968-4079-93fa-5a1c90cdc282" />
+
+<img width="1917" height="869" alt="image" src="https://github.com/user-attachments/assets/39c3a1f5-1a02-458b-9efe-9f5ec61559b7" />
+
+
+
+
+
+
+
 
 
 ## Bitácora de reflexión
