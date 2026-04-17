@@ -162,9 +162,57 @@ En cuanto al nivel de emergencia, en los flow fields es moderado porque aunque e
 ***¿Qué algoritmo usar según el tipo de canción?***
 Para una canción contemplativa usaría flow fields, porque su movimiento suave y continuo genera una sensación de calma y flujo constante. Para una canción agresiva usaría flocking, ya que puede volverse caótico, rápido y con cambios bruscos que transmiten energía. En una canción melancólica también elegiría flow fields, porque sus trayectorias fluidas pueden transmitir suavidad y sensación emocional sostenida. Finalmente, para una canción eufórica usaría flocking, ya que el movimiento colectivo, dinámico y cambiante puede representar mejor la intensidad y la energía alta.
 
-## Actividad 6.
 
 ## Bitácora de aplicación 
+
+## Actividad 6.
+
+***Tema visual de la pieza*** <br>
+Usando la canción "secret garden" busco representa a través de un flujo continuo de agentes el crecimiento y surgimiento de la flores. Usando como base para el concepto la enfermedad ficticia "hanahaki" que consiste en que al enefermo le crecen flores desde el interior de su cuerpo; siendo que la protagonista de la canción sufre de esta enfermedad.
+
+<br>
+
+***Relación con el tema musical*** <br>
+En las partes más fuertes de la canción el número de agentes que forman las flores en pantalla va aumentando, para representar el avance y empeoro de la enfermedad.
+
+<br>
+
+***Moodboard*** 
+<br>
+<img width="1920" height="1080" alt="Diseño sin título" src="https://github.com/user-attachments/assets/fd3ec58a-a3a0-4afa-8553-38e6a6c1ec69" />
+<br>
+
+
+***boceto*** 
+<br>
+<img width="960" height="1280" alt="WhatsApp Image 2026-04-17 at 4 08 23 AM" src="https://github.com/user-attachments/assets/71d44e5f-66a7-44e7-96ff-be7ba1fa7eaf" />
+<br>
+
+***Mapa de decisiones*** <br>
+***Color negro de fondo:*** Representa el vacio y la muerte que atrae la enfermedad.
+<br>
+
+***Color amarillo de las flores:*** Representan el brillo efimero de una person a punto de morir.
+<br>
+
+***Color rojo de las flores:*** Representan el deterioro de la persona y su inminente final.
+<br>
+
+***tallo de la flor*** Representan el crecimiento de una nueva vida, que se aferra a otra, la desgasta y la desaparece para poder crecer.
+<br>
+
+***Mapa de interpretación*** <br>
+***C:*** Hace que la flor vuelva a crecer y cambie de color, ya sea amaraillo o rojo.
+<br>
+
+***Espacio:*** Causa que el flow field se vuelva caotico.
+<br>
+
+***Musica:*** Controla la frecuencia con la que emergen las flores. 
+
+<br>
+
+***Link al instrumento visual:*** https://editor.p5js.org/luisafer1845/sketches/cmGOlhJ2F
 
 
 ## Bitácora de reflexión
