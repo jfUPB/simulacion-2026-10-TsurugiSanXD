@@ -214,5 +214,419 @@ En las partes más fuertes de la canción el número de agentes que forman las f
 
 ***Link al instrumento visual:*** https://editor.p5js.org/luisafer1845/sketches/cmGOlhJ2F
 
+<br>
+
+***codigo:*** <br>
+
+```
+
+
+let stressMode = false;
+
+let song, amp, fft;
+let particles = [];
+let started = false;
+let flowfield;
+let spacing = 20;
+
+let centerX, centerY;
+let centralRadius = 180;
+
+let maxParticles = 2500;
+
+let growPhase = 0;
+let openAmt = 0;
+let stemLen = 0;
+
+let useRed = false;
+
+let centralDead = false;
+let respawnTimer = 0;
+
+let bassAvg = 0;
+
+const COL_YELLOW = [255, 220, 60];
+const COL_RED = [220, 40, 60];
+let currentCol = COL_YELLOW;
+
+function preload(){
+  soundFormats('mp3','wav');
+  song = loadSound('flower.mp3');
+}
+
+function setup(){
+  createCanvas(windowWidth, windowHeight);
+  background(5,0,8);
+
+  amp = new p5.Amplitude();
+  fft = new p5.FFT(0.85, 64);
+
+  initializeFlowField();
+
+  centerX = width/2;
+  centerY = height/2 + 40;
+}
+
+function draw(){
+
+  if(!started){
+    background(5,0,8);
+
+    fill(180,140,60);
+    textAlign(CENTER,CENTER);
+    text('"Tus flores brotan sin permiso"', width/2, height/2);
+    text("click para florecer", width/2, height/2 + 40);
+    return;
+  }
+
+  background(5,0,8,20);
+
+  let level = amp.getLevel();
+  fft.analyze();
+
+  let bass = fft.getEnergy("bass");
+  let mid  = fft.getEnergy("mid");
+  let treble = fft.getEnergy("treble");
+
+  currentCol = useRed ? COL_RED : COL_YELLOW;
+
+  bassAvg = lerp(bassAvg, bass, 0.05);
+
+  flowfield.update(level);
+
+ 
+  if(growPhase === 1){
+    stemLen += map(level, 0, 0.3, 0.5, 3);
+    stemLen = constrain(stemLen, 0, 140);
+
+    drawStem();
+
+    if(stemLen >= 140){
+      growPhase = 2;
+    }
+    return;
+  }
+
+  if(growPhase === 2){
+
+    drawStem();
+
+    let growthSpeed = map(level, 0, 0.3, 0.003, 0.03);
+    openAmt = min(openAmt + growthSpeed, 1);
+
+    let radius = map(openAmt, 0, 1, 20, 220);
+
+    if(frameCount % 10 === 0){
+      spawnFlower(centerX, centerY - stemLen, radius, 120, currentCol, true);
+      spawnCore(centerX, centerY - stemLen, radius * 0.5, bass);
+    }
+
+    if(openAmt >= 1){
+      growPhase = 3;
+    }
+  }
+
+  if(growPhase === 3){
+
+    drawStem();
+
+    if(frameCount % 8 === 0){
+      let size = map(bass, 0, 255, 140, 240);
+
+      spawnFlower(centerX, centerY - stemLen, size, 140, currentCol, true);
+      spawnCore(centerX, centerY - stemLen, size * 0.5, bass);
+    }
+
+  
+    let voiceEnergy = mid;
+
+    let spawnRate = map(voiceEnergy, 0, 255, 80, 10);
+    let spawnAmount = floor(map(voiceEnergy, 0, 255, 1, 6));
+
+    if(frameCount % floor(spawnRate) === 0){
+      for(let i = 0; i < spawnAmount; i++){
+        spawnCanvasFlowers(voiceEnergy);
+      }
+    }
+
+    if(level < 0.025){
+      centralDead = true;
+    }
+
+    if(centralDead){
+      respawnTimer++;
+      if(respawnTimer > 60){
+        resetCentral();
+      }
+    }
+  }
+
+
+  for(let i = particles.length - 1; i >= 0; i--){
+    let p = particles[i];
+    p.update(level, bass, treble);
+    p.show();
+
+    if(p.isDead()){
+      particles.splice(i,1);
+    }
+  }
+
+  if(particles.length > maxParticles){
+    particles.splice(0, particles.length - maxParticles);
+  }
+}
+
+
+function drawStem(){
+  let x = centerX;
+  let baseY = height/2 + 120;
+  let tipY = baseY - stemLen;
+
+  stroke(70,130,70,200);
+  strokeWeight(3);
+  noFill();
+
+  beginShape();
+  vertex(x, baseY);
+  bezierVertex(
+    x+20, baseY - stemLen*0.3,
+    x-20, baseY - stemLen*0.7,
+    x, tipY
+  );
+  endShape();
+}
+
+
+function spawnCore(cx, cy, radius, intensity){
+
+  let layers = floor(map(intensity, 0, 255, 3, 10));
+  let points = 20;
+
+  for(let l = 0; l < layers; l++){
+
+    let rFactor = map(l, 0, layers, 0.1, 0.9);
+
+    for(let i = 0; i < points; i++){
+
+      if(particles.length > maxParticles) return;
+
+      let angle = map(i, 0, points, 0, TWO_PI);
+
+      let petal = pow(abs(sin(angle * 4)), 0.6);
+      let r = radius * rFactor * (0.4 + petal * 0.6);
+
+      let x = cx + cos(angle) * r;
+      let y = cy + sin(angle) * r;
+
+      particles.push(new Particle(x,y,cx,cy,angle,radius,currentCol,true));
+    }
+  }
+}
+
+
+function spawnCanvasFlowers(energy){
+
+  let distFromCenter = map(energy, 0, 255, width*0.45, width*0.25);
+  let angle = random(TWO_PI);
+
+  let x = centerX + cos(angle)*distFromCenter;
+  let y = centerY + sin(angle)*distFromCenter;
+
+  if(dist(x,y,centerX,centerY) < centralRadius + 60) return;
+
+  let r = map(energy, 0, 255, 30, 80);
+
+  spawnFlower(x,y,r,80,currentCol,false);
+  spawnCore(x,y,r*0.5,energy);
+}
+
+
+function spawnFlower(cx,cy,radius,count,col,isCentral){
+
+  for(let i=0;i<count;i++){
+
+    if(particles.length > maxParticles) return;
+
+    let angle = map(i,0,count,0,TWO_PI);
+    let petal = pow(abs(sin(angle*4)),0.6);
+    let r = radius*(0.35 + petal*0.68);
+
+    let x = cx + cos(angle)*r;
+    let y = cy + sin(angle)*r;
+
+    particles.push(new Particle(x,y,cx,cy,angle,radius,col,isCentral));
+  }
+}
+
+
+function initializeFlowField(){
+  flowfield = new FlowField(spacing);
+}
+
+class FlowField{
+  constructor(spacing){
+    this.spacing = spacing;
+    this.cols = floor(width/spacing)+1;
+    this.rows = floor(height/spacing)+1;
+    this.field = [];
+    this.zoff = 0;
+    this.init();
+  }
+
+  init(){
+    for(let i=0;i<this.cols;i++){
+      this.field[i]=[];
+      for(let j=0;j<this.rows;j++){
+        let angle = noise(i*0.1,j*0.1)*TWO_PI;
+        this.field[i][j]=p5.Vector.fromAngle(angle);
+      }
+    }
+  }
+
+  update(level){
+    let speed = stressMode ? 0.01 : map(level,0,0.4,0.001,0.004);
+    this.zoff += speed;
+
+    for(let x=0;x<this.cols;x++){
+      for(let y=0;y<this.rows;y++){
+        let angle = noise(x*0.05,y*0.05,this.zoff)*TWO_PI*2;
+
+        if(stressMode){
+          angle *= 2; // 🔥 caos
+        }
+
+        this.field[x][y]=p5.Vector.fromAngle(angle);
+      }
+    }
+  }
+
+  lookup(pos){
+    let col = floor(constrain(pos.x/this.spacing,0,this.cols-1));
+    let row = floor(constrain(pos.y/this.spacing,0,this.rows-1));
+    return this.field[col][row].copy();
+  }
+}
+
+
+class Particle{
+  constructor(x,y,cx,cy,angle,radius,col,isCentral){
+    this.pos=createVector(x,y);
+    this.prev=this.pos.copy();
+    this.vel=p5.Vector.random2D().mult(0.2);
+    this.acc=createVector();
+
+    this.center=createVector(cx,cy);
+    this.angle=angle;
+    this.radius=radius;
+    this.col=col;
+
+    this.life = isCentral ? random(180,240) : random(120,180);
+    this.maxLife=this.life;
+
+    this.size = isCentral ? random(1.2,2) : random(1,1.6);
+  }
+
+  update(level,bass,treble){
+    this.prev=this.pos.copy();
+
+    let petal = pow(abs(sin(this.angle*4)),0.6);
+    let r = this.radius*(0.35 + petal*0.68);
+
+    let target=createVector(
+      this.center.x+cos(this.angle)*r,
+      this.center.y+sin(this.angle)*r
+    );
+
+    let force=p5.Vector.sub(target,this.pos);
+    force.mult(0.05);
+    this.acc.add(force);
+
+    let flow=flowfield.lookup(this.pos);
+    let strength = stressMode ? 0.6 : map(level,0,0.4,0.03,0.3);
+    flow.mult(strength);
+    this.acc.add(flow);
+
+    this.vel.add(this.acc);
+    this.vel.limit(stressMode ? 4 : 2);
+    this.pos.add(this.vel);
+    this.acc.mult(0);
+
+    this.life -= stressMode ? 3 : 2;
+  }
+
+  show(){
+    let alpha = map(this.life,0,this.maxLife,0,200);
+    stroke(...this.col,alpha);
+    strokeWeight(this.size);
+    line(this.prev.x,this.prev.y,this.pos.x,this.pos.y);
+  }
+
+  isDead(){
+    return this.life <= 0;
+  }
+}
+
+
+function mousePressed(){
+  if(!started){
+    userStartAudio();
+    song.play();
+    started = true;
+    growPhase = 1;
+
+    fullscreen(true);
+    noCursor();
+  }
+}
+
+
+function keyPressed(){
+  if(key === 'c' || key === 'C'){
+    useRed = !useRed;
+
+    particles = [];
+    growPhase = 1;
+    openAmt = 0;
+    stemLen = 0;
+    centralDead = false;
+  }
+
+  if(key === ' '){
+    stressMode = true;
+  }
+}
+
+function keyReleased(){
+  if(key === ' '){
+    stressMode = false;
+  }
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+  initializeFlowField();
+
+  centerX = width/2;
+  centerY = height/2 + 40;
+}
+
+```
+
+<br>
+
+***Capturas de pantalla:*** 
+<img width="1912" height="1079" alt="Captura de pantalla 2026-04-17 103928" src="https://github.com/user-attachments/assets/547b5ada-8f73-4010-ab0d-e37f5b2afe8b" />
+
+<img width="1919" height="1079" alt="Captura de pantalla 2026-04-17 103938" src="https://github.com/user-attachments/assets/69bd030f-d281-4ea2-92ed-efbb7755c03a" />
+
+<img width="1513" height="820" alt="Captura de pantalla 2026-04-17 103955" src="https://github.com/user-attachments/assets/8c85963a-113f-44c1-8dc1-7c18de58ca52" />
+
+<img width="1919" height="1079" alt="Captura de pantalla 2026-04-17 104019" src="https://github.com/user-attachments/assets/b3dc05f5-7081-42ed-b34e-e06a3982f4c5" />
+
+
+
+
+
 
 ## Bitácora de reflexión
