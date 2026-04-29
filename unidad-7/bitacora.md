@@ -256,7 +256,96 @@ https://github.com/user-attachments/assets/cf90f8ca-9a20-44c8-ba7a-bdf23e272a28
 
 ***Resultado:***
 El color cambia con los golpes de bajo. Esto permite detectar momentos específicos del audio.
+<br>
 
+***3) Explica qué comportamiento visual o físico activa ese dato.*** <br>
+***R\:*** La amplitud es útil para movimientos suaves y continuos.
+Las frecuencias permiten detectar eventos más específicos (como beats o golpes). Esto demuestra que el sonido puede traducirse en distintos tipos de comportamiento dependiendo del dato que se use.
+<br>
+
+***4) Describe qué tipo de respuesta sonora te serviría más para tu palabra y por qué.*** <br>
+***R\:*** Para mi proyecto (palabra: “Silencio”), me interesa trabajar con:
+<br>
+
+Amplitud baja → estabilidad (las letras permanecen quietas)>}<br>
+Picos de sonido → ruptura o movimiento
+<br>
+
+***¿Por qué?****
+Porque el concepto de “silencio” se puede representar mejor cuando:
+<br>
+No pasa nada visual (calma)
+Y solo reacciona cuando el sonido aparece (interrupción del silencio) Esto crea un contraste claro entre ausencia y presencia de sonido.
+
+## Actividad 4.
+
+***Prueba inicial****
+<br>
+En esta prueba integré una parte de la palabra “Silencio”, utilizando la letra (S) como cuerpo físico dentro de un sistema con Matter.js y reacción al audio mediante p5.js.
+
+Las letras están representadas como cajas que caen por gravedad y reaccionan al sonido modificando su comportamiento.
+
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/4a801f8d-8360-4836-914b-73c442f603df" />
+
+<img width="1913" height="862" alt="image" src="https://github.com/user-attachments/assets/2a130afe-7a2e-45ed-b5b4-6303703a1c67" />
+
+https://github.com/user-attachments/assets/ef41b454-06ba-4086-954d-07f75fcb9577
+
+<br>
+
+***¿Qué parte de la palabra construí?***
+En esta nueva prueba trabajé con una sola letra de la palabra “Silencio”, específicamente la “S”.
+La letra fue convertida en un conjunto de puntos usando tipografía digital, lo que permitió tratarla como una forma flexible en lugar de un bloque rígido.
+<br>
+
+***¿Qué propiedad física manipulé?***
+En lugar de usar físicas tradicionales de Matter.js (como gravedad o colisiones), manipulé una propiedad más cercana a lo físico pero desde lo visual:
+Deformación de la forma (desplazamiento de puntos)
+Dispersión controlada de la estructura de la letra
+Esto simula un comportamiento tipo vibración o inestabilidad, como si la letra tuviera una “estructura interna flexible”.
+<br>
+
+***¿Qué aspecto del audio afecta qué comportamiento?***
+Dato leído: amplitud del audio (volumen)
+Comportamiento activado:
+<br>
+Volumen bajo → la letra se mantiene estable y legible <br>
+Volumen medio → la letra vibra ligeramente <br>
+Volumen alto → la letra se deforma fuertemente y pierde su forma <br>
+
+Esto genera una relación directa entre sonido y forma visual. 
+<br>
+
+
+***Evaluación***
+<br>
+
+Lo que funcionó:
+<br>
+
+La deformación ocurre directamente en la letra, no en una caja externa.
+Se logra una conexión clara entre audio y transformación visual.
+La letra mantiene su identidad cuando el sonido es bajo, lo cual refuerza la legibilidad.
+<br>
+
+Lo que no funcionó del todo:
+<br>
+
+No hay interacción física real (no hay gravedad ni colisiones).
+La deformación es aleatoria, no estructural (no hay control fino del movimiento).
+Aún no se integra toda la palabra, solo una parte.
+<br>
+
+***Relación con el significado***
+<br>
+
+Este comportamiento se acerca más al concepto de “silencio”, ya que:
+<br>
+
+El estado base es estable (silencio)
+El sonido introduce perturbación (ruptura del silencio)
+
+Sin embargo, aún falta reforzar el contraste para que el concepto sea más claro, por ejemplo haciendo que la deformación sea más extrema o que la forma colapse completamente en presencia de sonido.
 
 
 
