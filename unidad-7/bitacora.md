@@ -1,4 +1,4 @@
-# Unidad 7
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/0f8c7f64-5f86-4462-ba7f-190410e7d826" /># Unidad 7
 
 ## Bitácora de proceso de aprendizaje
 
@@ -97,8 +97,114 @@ Permite interactuar con los objetos usando el mouse. Gracias a esto, puedes arra
 ***R\:***
 
 
+***Codigo***
+<br>
+
+```
+// Importar módulos de Matter.js
+const { Engine, World, Bodies } = Matter;
+
+let engine;
+let world;
+let boxes = [];
+let ground;
+
+function setup() {
+  createCanvas(400, 400);
+
+  engine = Engine.create();
+  world = engine.world;
+
+  // Suelo
+  ground = Bodies.rectangle(200, 390, 400, 20, { isStatic: true });
+  World.add(world, ground);
+
+  // Cajas (simulan letras)
+  for (let i = 0; i < 5; i++) {
+    let box = Bodies.rectangle(200, 50 + i * 60, 40, 40);
+    boxes.push(box);
+    World.add(world, box);
+  }
+}
+
+function draw() {
+  background(220);
+  Engine.update(engine);
+
+  rectMode(CENTER);
+  fill(100);
+
+  // Dibujar cajas
+  for (let box of boxes) {
+    push();
+    translate(box.position.x, box.position.y);
+    rotate(box.angle);
+    rect(0, 0, 40, 40);
+    pop();
+  }
+
+  // Dibujar suelo
+  rect(ground.position.x, ground.position.y, 400, 20);
+}
+```
+
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/ec88fa9c-e4a1-4939-95f6-63dd76c2291c" />
+
+***Codigo2***
+<br>
+
+```
+// Importar módulos de Matter.js
+const { Engine, World, Bodies, Mouse, MouseConstraint } = Matter;
+
+let engine;
+let world;
+let box;
+let mConstraint;
+
+function setup() {
+  createCanvas(400, 400);
+
+  engine = Engine.create();
+  world = engine.world;
+
+  // Crear objeto
+  box = Bodies.rectangle(200, 200, 80, 80);
+  World.add(world, box);
+
+  // Mouse
+  let canvasMouse = Mouse.create(canvas.elt);
+  canvasMouse.pixelRatio = pixelDensity();
+
+  let options = {
+    mouse: canvasMouse
+  };
+
+  mConstraint = MouseConstraint.create(engine, options);
+  World.add(world, mConstraint);
+}
+
+function draw() {
+  background(220);
+  Engine.update(engine);
+
+  rectMode(CENTER);
+  fill(150);
+
+  push();
+  translate(box.position.x, box.position.y);
+  rotate(box.angle);
+  rect(0, 0, 80, 80);
+  pop();
+}
+```
+
+<img width="1917" height="867" alt="image" src="https://github.com/user-attachments/assets/26bb1702-e93d-434e-8519-8472cbbc5ff6" />
+
+
+
 ***5) Describe qué tipo de comportamiento físico te interesa explorar en tu palabra.*** <br>
-***R\:***Para mi proyecto, me interesa explorar un comportamiento donde las letras de una palabra:
+***R\:*** Para mi proyecto, me interesa explorar un comportamiento donde las letras de una palabra:
 
 Se comporten como objetos independientes al inicio (caen o se dispersan).
 Luego se conecten mediante constraints, formando la palabra nuevamente.
