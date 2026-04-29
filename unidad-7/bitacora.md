@@ -1,4 +1,4 @@
-<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/0f8c7f64-5f86-4462-ba7f-190410e7d826" /># Unidad 7
+## Unidad 7
 
 ## Bitácora de proceso de aprendizaje
 
@@ -211,6 +211,55 @@ Luego se conecten mediante constraints, formando la palabra nuevamente.
 Permitan interacción con el usuario (arrastrarlas o desordenarlas).
 
 Esto crea una experiencia dinámica donde la palabra no es estática, sino que se construye, se rompe y se vuelve a formar, reforzando su significado a través del movimiento.
+
+
+## Actividad 3.
+
+***1) Realiza al menos dos experimentos simples de audio-reactividad.*** <br>
+***R\:*** En esta actividad exploré cómo el audio puede influir en lo visual o físico dentro de una simulación. Utilicé herramientas de p5.js como análisis de amplitud y frecuencia para transformar sonido en comportamiento visual.
+<br>
+
+***2) Realiza al menos dos experimentos simples de audio-reactividad.*** <br>
+***R\:*** 
+<br>
+
+***EXPERIMENTO 1***
+<br>
+
+***¿Qué dato se lee?***
+La amplitud del audio, que representa qué tan fuerte suena en un momento determinado.
+<br>
+
+***¿Qué comportamiento activa?***
+El tamaño de una figura cambia dependiendo del volumen: mientras más fuerte el sonido, más grande el objeto.
+<br>
+
+
+https://github.com/user-attachments/assets/9e524180-2a8e-451c-8678-aa5994dbd5da
+
+***Resultado:***
+El círculo “respira” con el sonido. Esto es una respuesta continua, porque cambia constantemente.
+
+***EXPERIMENTO 2***
+<br>
+
+***¿Qué dato se lee?***
+La energía en frecuencias bajas (bajos) usando FFT (Fast Fourier Transform).
+<br>
+
+***¿Qué comportamiento activa?***
+El color cambia dependiendo de la intensidad de los bajos.
+<br>
+
+
+https://github.com/user-attachments/assets/cf90f8ca-9a20-44c8-ba7a-bdf23e272a28
+
+***Resultado:***
+El color cambia con los golpes de bajo. Esto permite detectar momentos específicos del audio.
+
+
+
+
 
 
 ## Bitácora de aplicación 
