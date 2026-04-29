@@ -356,6 +356,6 @@ Sin embargo, aún falta reforzar el contraste para que el concepto sea más clar
 ## Actividad 5.
 
 
-
+link: https://editor.p5js.org/luisafer1845/sketches/VTeDWdJ82
 
 ## Bitácora de reflexión
