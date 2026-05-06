@@ -1,5 +1,3 @@
-## Unidad 7
-
 ## Bitácora de proceso de aprendizaje
 
 ## Actividad 1.
@@ -356,6 +354,360 @@ Sin embargo, aún falta reforzar el contraste para que el concepto sea más clar
 ## Actividad 5.
 
 
-link: https://editor.p5js.org/luisafer1845/sketches/VTeDWdJ82
+***1. Palabra elegida*** <br>
+<br>
+***BREAK***
+<br>
+<br>
+
+***2. Justificación conceptual*** <br>
+La palabra BREAK fue elegida porque su significado es inseparable de una acción física: romper implica tensión, impacto y ruptura irreversible. No es una palabra que describa un estado, sino un evento. Eso la hace ideal para una pieza donde el comportamiento visual y sonoro no ilustre la palabra sino que la ejecute. La pieza no muestra lo que significa break — la pieza es un break.
+<br>
+<br>
+
+***3. Análisis de su significado visual y comportamental*** <br>
+Visualmente, la palabra aparece estática y centrada, en tipografía serif (Georgia), con peso y presencia. Esa estabilidad inicial es deliberada: la tensión viene de saber que puede romperse. La palabra no cae sola ni se anima sin intervención — espera. Esa espera es parte del significado.
+El comportamiento físico está construido con Matter.js: la palabra tiene masa, fricción, restitución y responde a fuerzas reales. Al ser arrastrada y lanzada contra los bordes del canvas, el impacto detona la ruptura. Los fragmentos que quedan no son decorativos — son los restos del evento. La física no acompaña la palabra: la palabra es la física.
+La tipografía semántica funciona en dos momentos: antes del impacto, BREAK es una palabra entera bajo tensión; después, deja de existir como palabra y se convierte en fragmentos, perdiendo su legibilidad. Ese tránsito entre signo y ruido visual es el núcleo conceptual de la pieza.
+<br>
+<br>
+
+***4.Moodboard***
+<br>
+<img width="893" height="495" alt="image" src="https://github.com/user-attachments/assets/b43a49a4-d5d7-4c47-acf0-7452dc141234" />
+
+<br>
+<br>
+
+***5.Boceto***
+<br>
+<img width="1600" height="1200" alt="WhatsApp Image 2026-05-06 at 1 49 40 AM" src="https://github.com/user-attachments/assets/8368695a-97b4-43a6-9200-4759df8fe564" />
+
+<br>
+<br>
+
+***6.Mapa de decisiones***
+<br>
+<img width="668" height="573" alt="image" src="https://github.com/user-attachments/assets/e6bfcdfd-ab74-44dd-a501-49b3ea1a463f" />
+
+<br>
+<br>
+
+***7.Mapa de interpretación***
+<br>
+La pieza se ejecuta en vivo como un instrumento audiovisual con tres modos de intervención posibles:
+<br>
+***Modo 1: Silencio y observación***
+La palabra aparece estática en pantalla. No ocurre nada. La audiencia enfrenta la palabra como objeto tipográfico bajo tensión implícita.
+<br>
+
+***Modo 2: Intervención sonora***
+El intérprete o la audiencia produce sonido (voz, palmada, música). La palabra comienza a temblar con audio suave. Un sonido suficientemente fuerte la lanza contra los bordes. Si el impacto supera el umbral, se rompe. La ruptura puede construirse gradualmente (varios golpes pequeños que acumulan movimiento) o detonarse de un solo golpe.
+<br>
+
+***Modo 3: Intervención física***
+El intérprete arrastra la palabra con el mouse y la lanza deliberadamente contra una pared. La velocidad del lanzamiento determina si rompe o rebota. Es una acción consciente, performativa, donde el gesto del cuerpo sobre el mouse se traduce en destrucción tipográfica.
+<br>
+En todos los casos, al romperse la palabra suena el efecto de quiebre. La audiencia puede reiniciar la pieza con cualquier tecla y repetir el ciclo, convirtiendo la pieza en un loop performativo.
+<br>
+<br>
+
+***8. Explicación de la relación entre audio y comportamiento*** <br>
+El audio no es un efecto decorativo: es una fuerza física dentro del sistema. El micrófono escucha en tiempo real y traduce el volumen ambiente en comportamiento de la palabra de dos maneras distintas y con sentido semántico:
+<br>
+
+***Audio suave (voz baja, ruido de fondo):*** la palabra tiembla visualmente en su lugar. No se mueve, pero acusa la presencia del sonido. Es la tensión antes de la ruptura.
+<br>
+***Audio fuerte (golpe, palmada, voz alta):*** la palabra recibe un impulso físico real proporcional a la intensidad del sonido. Más volumen equivale a más fuerza. Si ese impulso la lleva a chocar contra un borde del canvas a suficiente velocidad, se rompe.
+<br>
+
+Esto significa que la ruptura puede ocurrir sin tocar el mouse: el sonido puede romper la palabra. La relación entre audio y comportamiento refuerza el significado de BREAK porque lo que quiebra la palabra no es solo el contacto físico, sino también la intensidad de lo que se escucha. El sonido tiene peso.
+Al momento de la ruptura, se reproduce un efecto sonoro de quiebre que cierra el ciclo: la palabra que fue rota por el audio, responde con audio.
+<br>
+<br>
+
+***9.Evidencia del uso de IA***
+<br>
+La IA (Claude) fue utilizada como herramienta de materialización técnica, no como origen conceptual de la pieza. Las decisiones de autoría que permanecieron humanas fueron: la elección de la palabra BREAK, la intención de que el audio fuera una fuerza física y no un efecto decorativo, la decisión de que la ruptura fuera irreversible y dependiera de velocidad real, y la estructura performativa de la pieza en tres modos de intervención.
+Lo que se delegó a la IA fue la implementación técnica: la integración de Matter.js con p5.js, la lógica de detección de colisiones, la traducción del volumen del micrófono en impulso físico proporcional, y la depuración de errores de carga de librerías y archivos de sonido. En varios momentos el código generado no funcionó y fue necesario redirigir, corregir el enfoque e identificar el problema real (nombre del archivo de sonido con espacios que rompía la carga silenciosamente).
+La IA aceleró la implementación pero no tomó decisiones conceptuales. Cada vez que el código se desvió de la intención original, la decisión de corregirlo y en qué dirección fue humana.
+<br>
+<br>
+
+***10.Codigo fuente***
+<br>
+
+***Index***
+<br>
+
+```
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREAK</title>
+    <style>
+      * { margin: 0; padding: 0; }
+      html, body { overflow: hidden; background: #0a0a0a; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
+```
+
+<br>
+
+***Sketch***
+<br>
+
+```
+
+const { Engine, Bodies, Body, World, Events, Mouse, MouseConstraint } = Matter;
+
+let engine, world;
+let wordBody, mConstraint;
+let walls = [];
+
+let broken = false;
+let shards = [];
+let sonido;
+let fontSize, wordW, wordH;
+
+const PALABRA = "BREAK";
+
+// Audio reactivo
+let mic;
+let micLevel = 0;
+let lastImpulse = 0;
+
+function preload() {
+  soundFormats('mp3');
+  sonido = loadSound('break');
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  textAlign(CENTER, CENTER);
+  textFont('Georgia');
+  fontSize = constrain(width * 0.13, 80, 160);
+  textSize(fontSize);
+  wordW = textWidth(PALABRA) + 20;
+  wordH = fontSize * 0.85;
+
+  mic = new p5.AudioIn();
+  mic.start();
+
+  initMatter();
+}
+
+
+function initMatter() {
+  engine = Engine.create({ gravity: { x: 0, y: 0 } });
+  world  = engine.world;
+
+  let t = 60;
+  walls = [
+    Bodies.rectangle(width/2,     height+t/2, width*3, t,        { isStatic:true, label:'floor' }),
+    Bodies.rectangle(width/2,     -t/2,        width*3, t,        { isStatic:true, label:'ceil'  }),
+    Bodies.rectangle(-t/2,        height/2,    t,       height*3, { isStatic:true, label:'wallL' }),
+    Bodies.rectangle(width+t/2,   height/2,    t,       height*3, { isStatic:true, label:'wallR' }),
+  ];
+  World.add(world, walls);
+
+  wordBody = Bodies.rectangle(width/2, height/2, wordW, wordH, {
+    isStatic:    true,
+    restitution: 0.3,
+    friction:    0.05,
+    frictionAir: 0.01,
+    label:       'word',
+    density:     0.005,
+  });
+  World.add(world, wordBody);
+
+  let m = Mouse.create(document.querySelector('canvas'));
+  m.pixelRatio = pixelDensity();
+  mConstraint = MouseConstraint.create(engine, {
+    mouse: m,
+    constraint: { stiffness: 0.2, damping: 0.1, render: { visible:false } }
+  });
+  World.add(world, mConstraint);
+
+  Events.on(mConstraint, 'startdrag', function(e) {
+    if (e.body && e.body.label === 'word') {
+      Body.setStatic(wordBody, false);
+    }
+  });
+
+  Events.on(engine, 'collisionStart', function(event) {
+    if (broken) return;
+    for (let pair of event.pairs) {
+      let a = pair.bodyA.label;
+      let b = pair.bodyB.label;
+      if ((a === 'word' || b === 'word') &&
+          (a === 'floor' || b === 'floor' ||
+           a === 'ceil'  || b === 'ceil'  ||
+           a === 'wallL' || b === 'wallL' ||
+           a === 'wallR' || b === 'wallR')) {
+        if (wordBody.speed > 5) {
+          triggerBreak();
+          return;
+        }
+      }
+    }
+  });
+}
+
+
+function triggerBreak() {
+  broken = true;
+  userStartAudio();
+  if (sonido && sonido.isLoaded()) sonido.play();
+
+  let cx = wordBody.position.x;
+  let cy = wordBody.position.y;
+
+  World.remove(world, wordBody);
+  wordBody = null;
+
+  shards = [];
+  for (let i = 0; i < 280; i++) {
+    let angle = random(TWO_PI);
+    let spd   = random(3, 13);
+    shards.push({
+      x:    cx + random(-wordW/2, wordW/2),
+      y:    cy + random(-wordH/2, wordH/2),
+      vx:   cos(angle) * spd * random(0.3, 1),
+      vy:   sin(angle) * spd - random(1, 5),
+      w:    random(4, 18),
+      h:    random(2, 7),
+      rot:  random(TWO_PI),
+      rotV: random(-0.12, 0.12),
+      a:    255
+    });
+  }
+}
+
+
+function resetSketch() {
+  broken = false;
+  shards = [];
+  World.clear(world);
+  Engine.clear(engine);
+  initMatter();
+}
+
+function draw() {
+  background(10);
+  Engine.update(engine, 1000/60);
+
+  micLevel = mic.getLevel();
+
+  if (!broken && wordBody) {
+
+    let umbral = 0.04;
+    if (micLevel > umbral && millis() - lastImpulse > 300) {
+      lastImpulse = millis();
+
+      if (wordBody.isStatic) Body.setStatic(wordBody, false);
+
+      let fuerza = map(micLevel, umbral, 0.4, 8, 35);
+      fuerza = constrain(fuerza, 8, 35);
+
+      let angle = random(TWO_PI);
+      Body.setVelocity(wordBody, {
+        x: cos(angle) * fuerza,
+        y: sin(angle) * fuerza
+      });
+      Body.setAngularVelocity(wordBody, random(-0.08, 0.08) * (fuerza / 10));
+    }
+
+    
+    let vibracion = micLevel > 0.01 ? map(micLevel, 0.01, umbral, 0, 2.5) : 0;
+
+    let pos = wordBody.position;
+    let ang = wordBody.angle;
+
+    push();
+    translate(pos.x + random(-vibracion, vibracion),
+              pos.y + random(-vibracion, vibracion));
+    rotate(ang);
+    textAlign(CENTER, CENTER);
+    textSize(fontSize);
+    textFont('Georgia');
+    fill(255);
+    noStroke();
+    text(PALABRA, 0, 0);
+    pop();
+
+  } else if (broken) {
+    noStroke();
+    let vivos = 0;
+    for (let s of shards) {
+      if (s.a <= 0) continue;
+      vivos++;
+      s.x  += s.vx;
+      s.y  += s.vy;
+      s.vy += 0.35;
+      s.vx *= 0.988;
+      s.rot += s.rotV;
+      s.a  -= 2.5;
+      push();
+      translate(s.x, s.y);
+      rotate(s.rot);
+      fill(255, s.a);
+      rect(-s.w/2, -s.h/2, s.w, s.h);
+      pop();
+    }
+    if (vivos === 0) {
+      fill(255, 60);
+      textSize(13);
+      textAlign(CENTER, CENTER);
+      text('presiona cualquier tecla para reiniciar', width/2, height/2);
+    }
+  }
+}
+
+
+function mousePressed() {
+  userStartAudio();
+  mic.start();
+  if (!fullscreen()) fullscreen(true);
+}
+
+function keyPressed() {
+  if (broken) resetSketch();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+```
+<br>
+<br>
+
+***11.Enlace al sketch***
+<br>
+***Link:*** https://editor.p5js.org/luisafer1845/sketches/VKPx9CD4F
+
+<br>
+<br>
+
+***12.Capturas***
+<br>
+<br>
+
+<img width="1477" height="797" alt="Captura de pantalla 2026-05-06 020726" src="https://github.com/user-attachments/assets/51a19180-3bcb-45aa-875d-87a5d7ad7e22" />
+<img width="1919" height="1079" alt="Captura de pantalla 2026-05-06 020720" src="https://github.com/user-attachments/assets/d0445887-8f05-4e1b-8628-896e73c42764" />
+<img width="1090" height="969" alt="Captura de pantalla 2026-05-06 020712" src="https://github.com/user-attachments/assets/1f13ec7e-b03d-4450-836b-c60c04965014" />
+<img width="1919" height="1079" alt="Captura de pantalla 2026-05-06 020708" src="https://github.com/user-attachments/assets/2505c144-024a-41f1-82c0-0692b7461ff2" />
+
+
 
 ## Bitácora de reflexión
