@@ -227,6 +227,12 @@ Al reconstruir el sistema fuera de p5.js entendí que los sistemas generativos n
 <br>
 <br>
 
+
+
+## Bitácora de aplicación 
+
+
+
 ## Actividad 5.
 
 ***Herramienta elegida***
@@ -366,13 +372,6 @@ fueron tomadas personalmente durante el desarrollo del proyecto.
 
 
 https://github.com/user-attachments/assets/38c54021-ac24-4fbf-b23e-257668da201e
-
-
-
-
-
-
-## Bitácora de aplicación 
 
 
 ## Bitácora de reflexión
