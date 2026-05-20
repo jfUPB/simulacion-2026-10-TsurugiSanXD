@@ -2,7 +2,7 @@
 
 ## Bitácora de proceso de aprendizaje
 
-
+a
 ## Bitácora de aplicación 
 
 
