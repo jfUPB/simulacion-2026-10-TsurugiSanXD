@@ -176,7 +176,200 @@ y comportamientos más complejos o interactivos dentro del sistema procedural.
 
 ## Actividad 4.
 
-***
+***cómo funcionaba el sistema en p5.js y cómo se implementa en la nueva herramienta***
+<br>
+
+
+| Sistema en p5.js                                                                                          | Implementación en Blender con Geometry Nodes                                                             |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Las partículas eran elementos generados mediante código con propiedades como posición y movimiento.       | Las partículas fueron representadas mediante puntos y geometría procedural generada con Geometry Nodes.  |
+| El comportamiento del sistema se construía escribiendo instrucciones y relaciones directamente en código. | El comportamiento se construyó conectando nodos y relaciones visuales dentro de un sistema procedural.   |
+| La aleatoriedad y el ruido se utilizaban para generar variaciones de movimiento y distribución.           | Se utilizaron nodos de ruido procedural y variaciones aleatorias para distribuir y animar los elementos. |
+| El sistema funcionaba principalmente en un entorno 2D.                                                    | El sistema pasó a un entorno 3D con profundidad, iluminación y materiales.                               |
+| Los elementos visuales eran más simples gráficamente.                                                     | Geometry Nodes permitió trabajar con materiales emisivos, Bloom y una visualidad más cinematográfica.    |
+| La relación entre partículas se programaba mediante lógica matemática escrita.                            | Las conexiones se generaron proceduralmente mediante curvas y relaciones visuales entre nodos.           |
+
+<br>
+<br>
+
+***¿Que se mantiene***
+<br>
+
+Lo que se mantiene entre ambos entornos es la lógica procedural y la idea de construir comportamientos complejos a partir de reglas simples. Tanto en p5.js como en Geometry Nodes el sistema depende de relaciones entre múltiples elementos, distribución procedural y variaciones generadas mediante aleatoriedad y ruido.
+<br>
+<br>
+
+***¿que cambia?***
+<br>
+
+Lo que cambia principalmente es la manera en que el sistema se construye técnicamente. En p5.js el comportamiento se desarrolla mediante programación escrita, mientras que en Geometry Nodes la lógica se organiza visualmente mediante conexiones entre nodos. Además, Blender introduce un entorno tridimensional que transforma la experiencia visual del sistema.
+<br>
+<br>
+
+***¿Qué ventajas aparecieron?***
+<br>
+
+Una de las principales ventajas fue la posibilidad de trabajar en un espacio 3D con iluminación, materiales y profundidad visual. Geometry Nodes también permitió construir una pieza más cercana a visuales audiovisuales y motion graphics profesionales. Además, el sistema procedural facilitó generar variaciones visuales complejas sin necesidad de modelar manualmente cada elemento.
+<br>
+<br>
+
+***¿Qué limitaciones surgieron?***
+<br>
+
+Una de las principales limitaciones fue la complejidad técnica de Geometry Nodes, especialmente al trabajar con atributos, materiales y conexiones procedurales. También surgieron dificultades relacionadas con el rendimiento del computador y con las diferencias entre versiones de Blender y los tutoriales utilizados como referencia.
+<br>
+<br>
+
+***¿Qué aprendiste sobre el sistema al reconstruirlo fuera de p5.js?***
+<br>
+
+Al reconstruir el sistema fuera de p5.js entendí que los sistemas generativos no dependen únicamente del lenguaje de programación o de una herramienta específica, sino de principios y relaciones que pueden adaptarse a distintos entornos. También comprendí que la lógica procedural puede expresarse tanto mediante código escrito como mediante estructuras visuales de nodos. Este proceso me permitió entender mejor cómo funcionan los sistemas de partículas y cómo pequeños cambios en reglas simples pueden producir comportamientos visuales complejos y orgánicos.
+<br>
+<br>
+
+## Actividad 5.
+
+***Herramienta elegida***
+<br>
+
+La herramienta elegida para el proyecto fue Blender utilizando Geometry Nodes.
+
+Elegí esta herramienta porque Blender es un software que ya utilizo frecuentemente dentro de procesos relacionados con modelado y animación. Sin embargo, nunca había trabajado específicamente con Geometry Nodes y me interesaba explorar sus posibilidades para construir sistemas procedurales y visuales generativos.
+
+Además, esta herramienta tiene una relación directa con mi interés profesional en animación y motion graphics, ya que permite crear piezas visuales dinámicas y audiovisuales utilizando procesos no destructivos y comportamientos generativos.
+<br>
+<br>
+
+***Sistema transferido***
+<br>
+
+El sistema transferido fue principalmente el de sistemas de partículas, utilizando también conceptos de aleatoriedad y ruido procedural para generar variaciones visuales y movimiento orgánico.
+
+La intención fue trasladar la lógica de múltiples elementos dinámicos conectados mediante reglas simples desde p5.js hacia un entorno tridimensional construido con Geometry Nodes.
+<br>
+<br>
+
+***Sistema transferido***
+<br>
+
+El sistema transferido fue principalmente el de sistemas de partículas, utilizando también conceptos de aleatoriedad y ruido procedural para generar variaciones visuales y movimiento orgánico.
+
+La intención fue trasladar la lógica de múltiples elementos dinámicos conectados mediante reglas simples desde p5.js hacia un entorno tridimensional construido con Geometry Nodes.
+<br>
+<br>
+
+***Contexto profesional concreto***
+<br>
+
+El contexto profesional planteado para la pieza fue el de visuales generativos para conciertos o eventos de música electrónica.
+
+La pieza fue pensada como un visual abstracto e inmersivo capaz de funcionar como fondo audiovisual para escenarios, presentaciones en vivo o visuales de acompañamiento musical, tomando inspiración de estéticas utilizadas en conciertos electrónicos y motion graphics experimentales.
+<br>
+<br>
+
+***Concepto visual***
+<br>
+
+El concepto visual de la pieza gira alrededor de la idea de una red dinámica y viva compuesta por partículas luminosas conectadas entre sí mediante relaciones procedurales.
+
+La intención era construir una estética tecnológica y futurista inspirada en visuales audiovisuales de música electrónica, utilizando movimiento orgánico, conexiones abstractas y estructuras generativas para transmitir sensación de energía, flujo y transformación constante.
+<br>
+<br>
+
+***Referencias***
+<br>
+
+Los principales referentes visuales fueron proyectos audiovisuales y visuales generativos utilizados en conciertos de música electrónica, especialmente piezas cercanas a la estética de artistas como Skrillex o David Guetta.
+<br>
+<br>
+
+***Bocetos***
+<br>
+
+<img width="1280" height="1190" alt="WhatsApp Image 2026-05-20 at 5 50 51 AM" src="https://github.com/user-attachments/assets/97655762-781d-40e7-bc7b-545c63c6b9e5" />
+<br>
+<br>
+
+***Explicación de la transferencia***
+<br>
+La transferencia consistió en reconstruir la lógica de un sistema de partículas originalmente trabajado en p5.js dentro de un entorno tridimensional utilizando Geometry Nodes.
+
+En lugar de trabajar mediante programación escrita, el sistema fue construido mediante relaciones visuales entre nodos, utilizando puntos, curvas, atributos y ruido procedural para generar comportamiento dinámico y conexiones entre partículas.
+<br>
+
+Aunque la herramienta cambió completamente, se mantuvieron principios fundamentales como:
+<br>
+
+construcción procedural,
+generación de comportamiento mediante reglas simples,
+aleatoriedad,
+y relaciones dinámicas entre múltiples elementos.
+
+***Mapa de desiciones***
+<br>
+
+| Decisión              | Razón                                    |
+| --------------------- | ---------------------------------------- |
+| Usar Blender          | Relación con animación y motion graphics |
+| Usar Geometry Nodes   | Explorar proceduralidad                  |
+| Sistema de partículas | Transferir lógica generativa             |
+| Estética electrónica  | Relación con visuales audiovisuales      |
+| Bloom y emisión       | Crear sensación inmersiva                |
+| Colores oscuros/neón  | Relación con conciertos electrónicos     |
+
+<br>
+<br>
+
+***Mapa de presentación***
+<br>
+
+La presentación final consistirá en:
+<br>
+
+la reproducción/render de la pieza visual terminada en pantalla completa,
+acompañada de una demostración breve dentro de Blender mostrando la estructura básica del sistema en Geometry Nodes y explicando cómo se realizó la transferencia desde p5.js hacia un entorno procedural tridimensional.
+<br>
+<br>
+
+***Evidencia uso de la IA***
+<br>
+
+La IA fue utilizada principalmente como apoyo técnico y de consulta durante el proceso de aprendizaje de Geometry Nodes, ayudando a resolver dudas relacionadas con:
+
+conexiones entre nodos,
+materiales,
+atributos,
+problemas técnicos,
+y organización conceptual de la transferencia.
+
+Sin embargo, las decisiones relacionadas con:
+
+la estética,
+el concepto visual,
+el contexto profesional,
+la selección de referencias,
+y la dirección general de la pieza
+fueron tomadas personalmente durante el desarrollo del proyecto.
+<br>
+<br>
+
+***Archivo***
+<br>
+
+[Final7.zip](https://github.com/user-attachments/files/28054839/Final7.zip)
+
+<br>
+<br>
+
+***Registro visual***
+<br>
+
+
+https://github.com/user-attachments/assets/38c54021-ac24-4fbf-b23e-257668da201e
+
+
+
+
 
 
 ## Bitácora de aplicación 
